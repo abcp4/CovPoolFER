@@ -110,7 +110,7 @@ def main(args):
 				image.set_shape((args.image_size, args.image_size, 3))
 				images.append(tf.image.per_image_standardization(image))
 				"""
-				image = my_func(np.zeros(100,100,3), dtype=np.float32))
+				image = my_func(np.zeros(100,100,3), dtype=np.float32)
 				images.append(image)
 
 			images_and_labels.append([images, label])
