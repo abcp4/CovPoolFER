@@ -93,6 +93,8 @@ def main(args):
 			filenames, label = input_queue.dequeue()
 			images = []
 			for filename in tf.unstack(filenames):
+				file_contents = tf.read_file(filename)
+				image = tf.image.decode_image(file_contents,channels=3)
 				"""
 				file_contents = tf.read_file(filename)
 				image = tf.image.decode_image(file_contents,channels=3)
@@ -110,7 +112,8 @@ def main(args):
 				image.set_shape((args.image_size, args.image_size, 3))
 				images.append(tf.image.per_image_standardization(image))
 				"""
-				images.append(tf.image.per_image_standardization(np.zeros((100,100,3),dtype=np.float32)))
+				#image = np.zeros((100,100,3),dtype=np.float32))
+				images.append(tf.image.per_image_standardization(image)
 
 			images_and_labels.append([images, label])
 
