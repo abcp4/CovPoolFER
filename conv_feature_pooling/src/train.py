@@ -100,9 +100,9 @@ def main(args):
 				file_contents = tf.read_file(filename)
 				image = tf.image.decode_jpeg(file_contents, channels=3)
 				image = tf.image.resize(image, [args.image_size, args.image_size])
-				"""
-				file_contents = tf.read_file(filename)
-				image = tf.image.decode_image(file_contents,channels=3)
+				
+				#file_contents = tf.read_file(filename)
+				#image = tf.image.decode_image(file_contents,channels=3)
 				if args.random_rotate:
 					image = tf.py_func(framework.random_rotate_image, [image], tf.uint8)
 				if args.random_crop:
@@ -119,6 +119,8 @@ def main(args):
 				"""
 				#image = np.zeros((100,100,3),dtype=np.float32))
 				images.append(tf.image.per_image_standardization(image))
+				"""
+				
 
 			images_and_labels.append([images, label])
 
