@@ -115,6 +115,7 @@ def main(args):
 		print('Total number of classes: %d' % nrof_classes)
 		print('Total number of examples: %d' % len(image_list))
 		print('Building training graph')
+		print(image_batch.shape)
 		prelogits = network.inference(image_batch, args.keep_probability, 
 			phase_train=phase_train_placeholder, bottleneck_layer_size=args.embedding_size, 
 			weight_decay=args.weight_decay, batch_size=args.batch_size)
