@@ -113,7 +113,7 @@ def main(args):
 				images.append(tf.image.per_image_standardization(image))
 				"""
 				#image = np.zeros((100,100,3),dtype=np.float32))
-				images.append(tf.image.per_image_standardization(image)
+				images.append(tf.image.per_image_standardization(image))
 
 			images_and_labels.append([images, label])
 
