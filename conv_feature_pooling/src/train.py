@@ -13,7 +13,7 @@ import numpy as np
 import importlib
 import argparse
 import framework
-import lfw
+#import lfw
 import h5py
 import tensorflow.contrib.slim as slim
 from tensorflow.python.ops import data_flow_ops
