@@ -27,10 +27,14 @@ config = tf.ConfigProto()
 config.gpu_options.allocator_type = 'BFC'
 
 
+def decode_img(img,size):
+  # convert the compressed string to a 3D uint8 tensor
+  img = tf.image.decode_jpeg(img, channels=3)
+  # Use `convert_image_dtype` to convert to floats in the [0,1] range.
+  #img = tf.image.convert_image_dtype(img, tf.uint8)
+  # resize the image to the desired size.
+  return tf.image.resize(img, [size, size])
 
-def my_func(arg):
-  arg = tf.convert_to_tensor(arg, dtype=tf.float32)
-  return tf.matmul(arg, arg) + arg
 
 def main(args):
 	#network = importlib.import_module(args.model_def)
@@ -94,7 +98,7 @@ def main(args):
 			images = []
 			for filename in tf.unstack(filenames):
 				file_contents = tf.read_file(filename)
-				image = tf.image.decode_image(file_contents,channels=3)
+				image = decode_image(file_contents,args.image_size)
 				"""
 				file_contents = tf.read_file(filename)
 				image = tf.image.decode_image(file_contents,channels=3)
