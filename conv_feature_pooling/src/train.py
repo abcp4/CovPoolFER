@@ -26,6 +26,12 @@ from tensorflow.python.ops import array_ops
 config = tf.ConfigProto()
 config.gpu_options.allocator_type = 'BFC'
 
+
+
+def my_func(arg):
+  arg = tf.convert_to_tensor(arg, dtype=tf.float32)
+  return tf.matmul(arg, arg) + arg
+
 def main(args):
 	#network = importlib.import_module(args.model_def)
 	network = covpoolnet
@@ -87,6 +93,7 @@ def main(args):
 			filenames, label = input_queue.dequeue()
 			images = []
 			for filename in tf.unstack(filenames):
+				"""
 				file_contents = tf.read_file(filename)
 				image = tf.image.decode_image(file_contents,channels=3)
 				if args.random_rotate:
@@ -97,10 +104,15 @@ def main(args):
 					image = tf.image.resize_image_with_crop_or_pad(image, args.image_size, args.image_size)
 				if args.random_flip:
 					image = tf.image.random_flip_left_right(image)
-    
+    				
+				
                 #pylint: disable=no-member
 				image.set_shape((args.image_size, args.image_size, 3))
 				images.append(tf.image.per_image_standardization(image))
+				"""
+				image = my_func(np.zeros(100,100,3), dtype=np.float32))
+				images.append(image)
+
 			images_and_labels.append([images, label])
 
 		image_batch, label_batch = tf.train.batch_join(
