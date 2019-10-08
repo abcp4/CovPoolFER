@@ -17,7 +17,7 @@ def inference(images, keep_probability, phase_train=True, bottleneck_layer_size=
         weights_regularizer=slim.l2_regularizer(weight_decay),
         normalizer_fn=slim.batch_norm,
         normalizer_params=batch_norm_params):
-        return network(images, is_training=phase_train,dropout_keep_prob=keep_probability,bottleneck_layer_size=bottleneck_layer_size, batch_size)
+        return network(images, is_training=phase_train,dropout_keep_prob=keep_probability,bottleneck_layer_size=bottleneck_layer_size, batch_size=batch_size)
 
 def network(inputs,is_training=True,dropout_keep_prob=1,bottleneck_layer_size=7, reuse=None, scope='CovPoolNetwork', batch_size=128):
     #dropout_keep_prob=1
