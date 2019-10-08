@@ -98,7 +98,7 @@ def main(args):
 			images = []
 			for filename in tf.unstack(filenames):
 				file_contents = tf.read_file(filename)
-				image = tf.image.decode_jpeg(image, channels=3)
+				image = tf.image.decode_jpeg(file_contents, channels=3)
 				image = tf.image.resize(image, [args.image_size, args.image_size])
 				"""
 				file_contents = tf.read_file(filename)
