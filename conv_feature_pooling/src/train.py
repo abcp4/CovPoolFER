@@ -11,6 +11,7 @@ import random
 import tensorflow as tf
 import numpy as np
 import importlib
+from models import covpoolnet2
 import argparse
 import framework
 #import lfw
@@ -24,7 +25,8 @@ config = tf.ConfigProto()
 config.gpu_options.allocator_type = 'BFC'
 
 def main(args):
-	network = importlib.import_module(args.model_def)
+	#network = importlib.import_module(args.model_def)
+	network = covpoolnet2
 	subdir = datetime.strftime(datetime.now(), '%Y%m%d-%H%M%S')
 	log_dir = os.path.join(os.path.expanduser(args.logs_base_dir), subdir)
 	if not os.path.isdir(log_dir):  # Create the log directory if it doesn't exist
