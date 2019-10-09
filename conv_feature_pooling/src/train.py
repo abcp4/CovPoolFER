@@ -106,9 +106,10 @@ def main(args):
 				
 				if args.random_rotate:
 					image = tf.py_func(framework.random_rotate_image, [image], tf.uint8)
+				"""
 				if args.random_crop:
 					image = tf.random_crop(image, [args.image_size, args.image_size, 3])
-				"""
+				
 				else:
 					image = tf.image.resize_image_with_crop_or_pad(image, args.image_size, args.image_size)
 				if args.random_flip:
