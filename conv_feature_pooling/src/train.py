@@ -103,7 +103,7 @@ def main(args):
 				
 				#file_contents = tf.read_file(filename)
 				#image = tf.image.decode_image(file_contents,channels=3)
-				
+				"""
 				if args.random_rotate:
 					image = tf.py_func(framework.random_rotate_image, [image], tf.uint8)
 				"""
@@ -115,7 +115,7 @@ def main(args):
 				if args.random_flip:
 					image = tf.image.random_flip_left_right(image)
     				
-				"""
+				
                 #pylint: disable=no-member
 				image.set_shape((args.image_size, args.image_size, 3))
 				images.append(tf.image.per_image_standardization(image))
