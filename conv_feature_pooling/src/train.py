@@ -11,6 +11,7 @@ import random
 import tensorflow as tf
 import numpy as np
 import importlib
+import math
 from models import covpoolnet2
 from models import covpoolnet
 
@@ -103,10 +104,13 @@ def main(args):
 				
 				#file_contents = tf.read_file(filename)
 				#image = tf.image.decode_image(file_contents,channels=3)
-				"""
+				
 				if args.random_rotate:
-					image = tf.py_func(framework.random_rotate_image, [image], tf.uint8)
-				"""
+					#image = tf.py_func(framework.random_rotate_image, [image], tf.uint8)
+					degree_angle = 45 # In degrees
+					radian = degree_angle * math.pi / 180
+					image = tf.contrib.image.rotate(image, radian)
+				
 				if args.random_crop:
 					image = tf.random_crop(image, [args.image_size, args.image_size, 3])
 				
