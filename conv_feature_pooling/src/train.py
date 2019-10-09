@@ -107,7 +107,7 @@ def main(args):
 				
 				if args.random_rotate:
 					#image = tf.py_func(framework.random_rotate_image, [image], tf.uint8)
-					degree_angle = 45 # In degrees
+					degree_angle = random.randint(1,360) # In degrees
 					radian = degree_angle * math.pi / 180
 					image = tf.contrib.image.rotate(image, radian)
 				
