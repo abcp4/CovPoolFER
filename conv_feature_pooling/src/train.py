@@ -144,9 +144,12 @@ def main(args):
 		print('Total number of examples: %d' % len(image_list))
 		print('Building training graph')
 		print(image_batch.shape)
+		#prelogits = network.inference(image_batch, args.keep_probability, 
+		#	phase_train=phase_train_placeholder, bottleneck_layer_size=args.embedding_size, 
+		#	weight_decay=args.weight_decay, batch_size=args.batch_size)
 		prelogits = network.inference(image_batch, args.keep_probability, 
 			phase_train=phase_train_placeholder, bottleneck_layer_size=args.embedding_size, 
-			weight_decay=args.weight_decay, batch_size=args.batch_size)
+			weight_decay=args.weight_decay)
 		logits = slim.fully_connected(prelogits, len(train_set), activation_fn=None, 
                 weights_initializer=tf.truncated_normal_initializer(stddev=0.1), 
                 weights_regularizer=slim.l2_regularizer(args.weight_decay),
