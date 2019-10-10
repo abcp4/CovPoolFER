@@ -39,7 +39,7 @@ def decode_img(img,size):
 
 def main(args):
 	#network = importlib.import_module(args.model_def)
-	network = covpoolnet
+	network = covpoolnet2
 	subdir = datetime.strftime(datetime.now(), '%Y%m%d-%H%M%S')
 	log_dir = os.path.join(os.path.expanduser(args.logs_base_dir), subdir)
 	if not os.path.isdir(log_dir):  # Create the log directory if it doesn't exist
